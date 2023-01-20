@@ -8,22 +8,13 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
         `)
 })
 input.onButtonPressed(Button.A, function () {
-    for (let index = 0; index < 1000000000000; index++) {
-        basic.showIcon(IconNames.Giraffe)
-        music.playMelody("D E C F D E F C ", 120)
-    }
+    action = 1
 })
 input.onButtonPressed(Button.AB, function () {
-    for (let index = 0; index < 1000000000000; index++) {
-        basic.showArrow(ArrowNames.North)
-        music.playMelody("C D C E C D C G ", 166)
-    }
+    action = 3
 })
 input.onButtonPressed(Button.B, function () {
-    for (let index = 0; index < 1000000000000; index++) {
-        basic.showIcon(IconNames.Happy)
-        music.playMelody("G F E A G A D A ", 150)
-    }
+    action = 2
 })
 input.onGesture(Gesture.Shake, function () {
     basic.showString("CALM DOWN!")
@@ -34,6 +25,20 @@ input.onLogoEvent(TouchButtonEvent.Touched, function () {
 input.onLogoEvent(TouchButtonEvent.Released, function () {
     basic.showIcon(IconNames.SmallHeart)
 })
-for (let index = 0; index < 1000000000000; index++) {
-    music.playMelody("A E A F A G F E ", 120)
-}
+let action = 0
+action = 0
+music.playMelody("A E A F A G F E ", 120)
+basic.forever(function () {
+    if (action == 1) {
+        basic.showIcon(IconNames.Giraffe)
+        music.playMelody("D E C F D E F C ", 120)
+    }
+    if (action == 2) {
+        basic.showIcon(IconNames.Happy)
+        music.playMelody("G F E A G A D A ", 150)
+    }
+    if (action == 3) {
+        basic.showArrow(ArrowNames.North)
+        music.playMelody("C D C E C D C G ", 166)
+    }
+})
