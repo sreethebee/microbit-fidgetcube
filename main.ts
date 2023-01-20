@@ -1,11 +1,5 @@
 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
-    basic.showLeds(`
-        . # . . .
-        # # . . .
-        . # . . #
-        . # # # .
-        . # . # .
-        `)
+    action = 4
 })
 input.onButtonPressed(Button.A, function () {
     action = 1
@@ -20,7 +14,7 @@ input.onGesture(Gesture.Shake, function () {
     basic.showString("CALM DOWN!")
 })
 input.onLogoEvent(TouchButtonEvent.Touched, function () {
-    basic.showIcon(IconNames.Heart)
+    action = 5
 })
 input.onLogoEvent(TouchButtonEvent.Released, function () {
     basic.showIcon(IconNames.SmallHeart)
@@ -40,5 +34,17 @@ basic.forever(function () {
     if (action == 3) {
         basic.showArrow(ArrowNames.North)
         music.playMelody("C D C E C D C G ", 166)
+    }
+    if (action == 4) {
+        basic.showLeds(`
+            . # . . .
+            # # . . .
+            . # . . #
+            . # # # .
+            . # . # .
+            `)
+    }
+    if (action == 5) {
+        basic.showIcon(IconNames.Heart)
     }
 })
